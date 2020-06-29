@@ -9,12 +9,11 @@ const bool& Cell::getState() {
 }
 
 void Cell::setPosition(const sf::Vector2f& position) {
-    m_position = position;
-    m_square.setPosition(m_position);
+    m_square.setPosition(position);
 }
 
-void Cell::setSize(const sf::Vector2f& size) {
-    m_square.setSize(size); 
+void Cell::setSize(const float& size) {
+    m_square.setSize(sf::Vector2f(size, size)); 
 }
 
 void Cell::draw(sf::RenderTarget& renderer) {
