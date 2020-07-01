@@ -4,7 +4,7 @@ Game::Game()
     : m_window({1920, 1080}, "Conway's Game of Life")
 {
     m_windowSize = m_window.getSize();
-    //m_window.setFramerateLimit(15);
+    m_window.setFramerateLimit(0);
 
     m_cells.resize(m_windowSize.x / m_cellWidth, 
             std::vector<Cell>(m_windowSize.y / m_cellWidth));
@@ -73,6 +73,7 @@ int Game::getLiveNeighbors(int& x, int& y) {
     }
     return liveNeighbors;
 }
+
 
 void Game::handleEvent() {
     sf::Event event;

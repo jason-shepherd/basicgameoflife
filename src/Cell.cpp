@@ -1,7 +1,12 @@
 #include "Cell.h"
 
 void Cell::setState(const bool& state) {
-    m_state = state;
+    m_state = state; 
+    if(m_state)
+        m_square.setFillColor(sf::Color(255, 255, 255));
+    else
+        m_square.setFillColor(sf::Color(0, 0, 0));
+
 }
 
 const bool& Cell::getState() {
@@ -17,10 +22,5 @@ void Cell::setSize(const float& size) {
 }
 
 void Cell::draw(sf::RenderTarget& renderer) {
-    if(m_state)
-        m_square.setFillColor(sf::Color(255, 255, 255));
-    else
-        m_square.setFillColor(sf::Color(0, 0, 0));
-
     renderer.draw(m_square);
 }
