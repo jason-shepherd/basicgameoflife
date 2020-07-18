@@ -1,0 +1,19 @@
+[
+ {
+  "directory": "C:\\Users\\Jason-Main\\Documents\\basicgameoflife\\version2\\src",
+  "arguments": [
+   "main.cpp",
+   "-I..\\include"
+  ],
+  "file": "main.cpp"
+ },
+ {
+  "directory": "C:\\Users\\Jason-Main\\Documents\\basicgameoflife\\version2\\src",
+  "arguments": [
+   "main.cpp",
+   "Game.cpp",
+   "-I..\\include"
+  ],
+  "file": "Game.cpp"
+ }
+]
