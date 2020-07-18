@@ -1,6 +1,6 @@
 #include "Game.h"
 
 int main() {
-    Game game;
-    game.run();
+    Game life(5, {1920, 1080}, sf::Style::Fullscreen);
+    life.run();
 }

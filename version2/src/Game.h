@@ -4,21 +4,21 @@
 #include <ctime>
 
 class Game {
-    public:
-        Game();
-        void run();
     private:
         sf::RenderWindow m_window;
+
+        int m_cellWidth;
         std::vector<bool> m_cells;
         std::vector<bool> m_cellsBuffer;
         std::vector<sf::Vertex> m_cellVertices;
-        int m_cellWidth = 3;
         sf::Vector2u m_gridSize;
 
-        void update();
         void initCells();
+        void update();
+        void setCellState(int& index, bool state);
         int coordsToIndex(int& x, int& y);
-        sf::Vector2f indexToCoords(int& index);
-        void setCellState(int index, bool state);
         void handleEvents();
+    public:
+        Game(int cellWidth, sf::VideoMode windowMode, uint32_t windowSettings = sf::Style::Default);
+        void run();
 };
