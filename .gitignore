@@ -6,3 +6,4 @@ Game.o
 main.o
 Cell.o
 compile_commands.json
+.clangd
