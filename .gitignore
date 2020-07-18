@@ -2,3 +2,7 @@ Makefile
 bin
 include
 lib
+Game.o
+main.o
+Cell.o
+compile_commands.json
