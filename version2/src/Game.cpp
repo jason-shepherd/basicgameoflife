@@ -32,14 +32,14 @@ void Game::initCells() {
    //Position the cell vertices, there might be a slightly better way to do this 
    for(int i = 0; i < m_gridSize.x; i++) {
         for(int j = 0; j < m_gridSize.y; j++) {
-            int index = coordsToIndex(i, j);
-            m_cellVertices[index*4  ].position = sf::Vector2f(i * m_cellWidth,               j * m_cellWidth);
-            m_cellVertices[index*4+1].position = sf::Vector2f(i * m_cellWidth + m_cellWidth, j * m_cellWidth);
-            m_cellVertices[index*4+2].position = sf::Vector2f(i * m_cellWidth + m_cellWidth, j * m_cellWidth + m_cellWidth);
-            m_cellVertices[index*4+3].position = sf::Vector2f(i * m_cellWidth,               j * m_cellWidth + m_cellWidth);
+            int index = coordsToIndex(i, j) * 4;
+            m_cellVertices[index  ].position = sf::Vector2f(i * m_cellWidth,               j * m_cellWidth);
+            m_cellVertices[index+1].position = sf::Vector2f(i * m_cellWidth + m_cellWidth, j * m_cellWidth);
+            m_cellVertices[index+2].position = sf::Vector2f(i * m_cellWidth + m_cellWidth, j * m_cellWidth + m_cellWidth);
+            m_cellVertices[index+3].position = sf::Vector2f(i * m_cellWidth,               j * m_cellWidth + m_cellWidth);
 
             //Assign the cell a pseudo random state
-            m_cells[index] = bool(std::rand() % 2);
+            m_cells[index / 4] = bool(std::rand() % 2);
         }
    }
 }
@@ -63,19 +63,20 @@ void Game::update() {
             int index = coordsToIndex(i, j);
             bool state = m_cells[index];
             if(liveNeighbors == 3 || (state && liveNeighbors == 2)) 
-                setCellState(index, true);
+                m_cellsBuffer[index] = true;
             else
-                setCellState(index, false);
+                m_cellsBuffer[index] = false;
+
+            setCellColor(index, m_cellsBuffer[index] ? sf::Color::White : sf::Color::Black);
         }
     }
     m_cells.swap(m_cellsBuffer);
 }
 
-void Game::setCellState(int& index, bool state) {
-    //Simple function to change the color of the cell vertices and the state in the buffer
-    m_cellsBuffer[index] = state;
+void Game::setCellColor(int& index, sf::Color color) {
+    //Simple function to change the color of the cell vertices
     for(int i = 0; i < 4; i++) {
-        m_cellVertices[index * 4 + i].color = state ? sf::Color::White : sf::Color::Black;
+        m_cellVertices[index * 4 + i].color = color;
     }
 }
 

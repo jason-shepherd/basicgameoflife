@@ -15,7 +15,7 @@ class Game {
 
         void initCells();
         void update();
-        void setCellState(int& index, bool state);
+        void setCellColor(int& index, sf::Color color);
         int coordsToIndex(int& x, int& y);
         void handleEvents();
     public:
