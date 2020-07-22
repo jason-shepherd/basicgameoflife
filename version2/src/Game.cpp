@@ -73,14 +73,14 @@ void Game::update() {
     m_cells.swap(m_cellsBuffer);
 }
 
-void Game::setCellColor(int& index, sf::Color color) {
+void Game::setCellColor(int index, sf::Color color) {
     //Simple function to change the color of the cell vertices
     for(int i = 0; i < 4; i++) {
         m_cellVertices[index * 4 + i].color = color;
     }
 }
 
-int Game::coordsToIndex(int& x, int& y) {
+int Game::coordsToIndex(int x, int y) {
     return y * m_gridSize.x + x;
 }
 

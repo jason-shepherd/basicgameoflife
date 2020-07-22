@@ -15,8 +15,8 @@ class Game {
 
         void initCells();
         void update();
-        void setCellColor(int& index, sf::Color color);
-        int coordsToIndex(int& x, int& y);
+        void setCellColor(int index, sf::Color color);
+        int coordsToIndex(int x, int y);
         void handleEvents();
     public:
         Game(int cellWidth, sf::VideoMode windowMode, uint32_t windowSettings = sf::Style::Default);
